@@ -1,0 +1,132 @@
+﻿@using ASM_NET104.ViewModels;
+@model List<ProductViewModel>;
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/bootstrap.css" />
+    <title>Index</title>
+    <style>
+
+        .nutthanhtoan {
+            -moz-box-shadow: inset 0px -1px 8px 0px #fce2c1;
+            -webkit-box-shadow: inset 0px -1px 8px 0px #fce2c1;
+            box-shadow: inset 0px -1px 8px 0px #fce2c1;
+            background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #59e47d), color-stop(1, #adea54) );
+            background: -moz-linear-gradient( center top, #59e47d 5%, #adea54 100% );
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#59e47d', endColorstr='#adea54');
+            background-color: #ffc477;
+            -webkit-border-top-left-radius: 26px;
+            -moz-border-radius-topleft: 26px;
+            border-top-left-radius: 26px;
+            -webkit-border-top-right-radius: 26px;
+            -moz-border-radius-topright: 26px;
+            border-top-right-radius: 26px;
+            -webkit-border-bottom-right-radius: 26px;
+            -moz-border-radius-bottomright: 26px;
+            border-bottom-right-radius: 26px;
+            -webkit-border-bottom-left-radius: 26px;
+            -moz-border-radius-bottomleft: 26px;
+            border-bottom-left-radius: 26px;
+            text-indent: 0px;
+            border: 1px solid #eeb44f;
+            display: inline-block;
+            color: #ffffff;
+            font-family :'Times New Roman';
+            font-size: 23px;
+            font-weight: bold;
+            font-style: normal;
+            height: 59px;
+            line-height: 59px;
+            width: 163px;
+            text-decoration: none;
+            text-align: center;
+            text-shadow: 1px 1px 0px #cc9f52;
+        }
+
+            .nutthanhtoan:hover {
+                background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #4accef), color-stop(1, #4abfb1) );
+                background: -moz-linear-gradient( center top, #4accef 5%, #4abfb1 100% );
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr= '#4abfb1', endColorstr='#4accef');
+                background-color: #fb9e25;
+            }
+
+            .nutthanhtoan:active {
+                position: relative;
+                top: 1px;
+            }
+
+
+        .table1 p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .table1 td {
+            vertical-align: middle;
+            border-top: 1px solid #eee;
+            padding: 30px;
+        }
+
+        .hinhAnh {
+            max-width: 30%;
+            height: auto;
+        }
+
+        #id_all {
+            text-align: center;
+        }
+
+        p {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+    </style>
+
+
+
+</head>
+<body>
+
+    <div id="id_all">
+
+        <table class="table1">
+            <thead>
+                <tr class="main-hading">
+                    <th scope="col">#</th>
+                    <th scope="col">Tên sản phẩm</th>
+                    <th scope="col">Giá</th>
+                    <th scope="col">Số lượng</th>
+                    <th scope="col">Hình Ảnh</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>@item.Name</td>
+                        <td>@item.Price.ToString("#,###")</td>
+                        <td>@item.Quantity</td>
+                        <td><img class="hinhAnh" src="/images/@item.Image" /></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <p>Tổng tiền : @Model.Sum(x => x.Total).ToString("#,###") VND</p>
+    <a href="/Cart/Checkout" class="nutthanhtoan">Thanh toán</a>
+    <!--form asp-action="Checkout">-->
+    @*<input class="nutthanhtoan" type="submit" value="Thanh toán">*@
+    <!--<a class="nutthanhtoan">Thanh toán</a>
+    </form>-->
+</body>
+</html>
